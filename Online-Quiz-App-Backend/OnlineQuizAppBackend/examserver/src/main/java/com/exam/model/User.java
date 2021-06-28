@@ -1,9 +1,15 @@
 package com.exam.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -12,8 +18,8 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
-
+	private Long userId;
+    
 	private String username;
 	
 	private String email;
@@ -30,14 +36,15 @@ public class User {
 	
 	private String profile;
 	
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="user")
+	private Set<UserRole> userRole=new HashSet<>();
+	
 	public User() {
 		super();
 	}
-
 	
-
 	public User(String username, String email, String password, String firstname, String lastname, String phonenumber,
-			boolean enabled, String profile) {
+			boolean enabled, String profile, Set<UserRole> userRole) {
 		super();
 		this.username = username;
 		this.email = email;
@@ -47,28 +54,31 @@ public class User {
 		this.phonenumber = phonenumber;
 		this.enabled = enabled;
 		this.profile = profile;
+		this.userRole = userRole;
 	}
 
+    public Long getUserId() {
+		return userId;
+	}
+    
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
+	public Set<UserRole> getUserRole() {
+		return userRole;
+	}
 
+	public void setUserRole(Set<UserRole> userRole) {
+		this.userRole = userRole;
+	}
+	
 	public boolean isEnabled() {
 		return enabled;
 	}
 
-
-
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
-	}
-
-
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getUsername() {
