@@ -41,4 +41,14 @@ public class UserServiceImpl implements UserService {
 		return theUser;
 	}
 
+    public User findUser(String username) {
+		
+		return this.userRepository.findByUsername(username);
+	}
+
+	public void deleteUser(Long id) {
+		
+		 this.userRepository.deleteById(id);
+	}
+
 }
