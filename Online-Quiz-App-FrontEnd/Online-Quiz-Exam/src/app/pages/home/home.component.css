@@ -1,0 +1,14 @@
+.container {
+   position: relative;
+}
+.topleft {
+   position: absolute;
+   left: 50%;
+   top: 45%;
+   transform: translate(-50%, -50%);
+   font-size: 18px;
+}
+img {
+   width: 100%;
+   height: auto;
+}

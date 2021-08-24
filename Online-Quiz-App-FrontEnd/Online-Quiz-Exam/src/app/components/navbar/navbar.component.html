@@ -1,1 +1,13 @@
-<p>navbar works!</p>
+<mat-toolbar color="primary">
+    <a routerlink="/home" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+     <mat-icon>menu_book</mat-icon>
+</a>
+   <span><button mat-raised-button color="primary" routerLink="/home"> My Pariksha App</button></span>
+   <span class="example-spacer"></span>
+   <a routerLink="/signup" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" style="margin-right: 4%;">
+     Register
+   </a>
+   <a routerLink="/login" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" style="margin-right:2%;">
+    Login
+  </a>
+ </mat-toolbar>
