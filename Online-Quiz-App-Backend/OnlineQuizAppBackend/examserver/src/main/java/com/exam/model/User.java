@@ -12,12 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="users")
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long userId;
     
 	private String username;
@@ -37,48 +39,15 @@ public class User {
 	private String profile;
 	
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="user")
+	@JsonIgnore
 	private Set<UserRole> userRole=new HashSet<>();
-	
-	public User() {
-		super();
-	}
-	
-	public User(String username, String email, String password, String firstname, String lastname, String phonenumber,
-			boolean enabled, String profile, Set<UserRole> userRole) {
-		super();
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.phonenumber = phonenumber;
-		this.enabled = enabled;
-		this.profile = profile;
-		this.userRole = userRole;
-	}
 
-    public Long getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
-    
+
 	public void setUserId(Long userId) {
 		this.userId = userId;
-	}
-
-	public Set<UserRole> getUserRole() {
-		return userRole;
-	}
-
-	public void setUserRole(Set<UserRole> userRole) {
-		this.userRole = userRole;
-	}
-	
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
 	}
 
 	public String getUsername() {
@@ -129,6 +98,14 @@ public class User {
 		this.phonenumber = phonenumber;
 	}
 
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	public String getProfile() {
 		return profile;
 	}
@@ -136,7 +113,33 @@ public class User {
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
-	
+
+	public Set<UserRole> getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(Set<UserRole> userRole) {
+		this.userRole = userRole;
+	}
+
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public User(String username, String email, String password, String firstname, String lastname, String phonenumber,
+			boolean enabled, String profile, Set<UserRole> userRole) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.phonenumber = phonenumber;
+		this.enabled = enabled;
+		this.profile = profile;
+		this.userRole = userRole;
+	}
 	
 	
 	
