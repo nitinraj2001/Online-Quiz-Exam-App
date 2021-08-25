@@ -33,7 +33,7 @@ public class AuthenticationController {
 		
 		System.out.println("AuthRequest data is: "+authrequest);
 		
-		try {
+		try {System.out.println(this.userDetailsServiceImpl.loadUserByUsername(authrequest.getUsername()));
 			
 			System.out.println("user with name"+authrequest.getUsername()+" "+"has requested to access the data");
 		   
