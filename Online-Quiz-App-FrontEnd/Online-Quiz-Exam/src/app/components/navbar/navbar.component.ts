@@ -26,7 +26,10 @@ export class NavbarComponent implements OnInit {
 
   logout(){
     this.loginservice.logout();
-    window.location.href='/login';
+    //window.location.href='/login';
+    this.isLoggedIn=false;
+    this.user=null;
+    this.router.navigate(['login']);
     this.snakebar.open("you have successfully logged out","ok");
   }
 

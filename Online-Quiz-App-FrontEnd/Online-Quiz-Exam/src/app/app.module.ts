@@ -22,6 +22,11 @@ import {MatIconModule} from '@angular/material/icon';
 import { HomeComponent } from './pages/home/home.component';
 import { AdmindashboardComponent } from './pages/admin/admindashboard/admindashboard.component';
 import { UserdashboardComponent } from './pages/user/userdashboard/userdashboard.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import {MatListModule} from '@angular/material/list';
+import { SideBarComponent } from './pages/admin/side-bar/side-bar.component';
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,10 @@ import { UserdashboardComponent } from './pages/user/userdashboard/userdashboard
     HomeComponent,
     AdmindashboardComponent,
     UserdashboardComponent,
+    ForgotPasswordComponent,
+    ProfileComponent,
+    SideBarComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +56,7 @@ import { UserdashboardComponent } from './pages/user/userdashboard/userdashboard
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-  
+    MatListModule
     
   ],
   providers: [

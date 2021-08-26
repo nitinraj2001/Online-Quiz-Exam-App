@@ -13,8 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.exam.services.impl.UserDetailsServiceImpl;
@@ -27,10 +25,10 @@ public class MyAppSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsServiceImpl userDetailsServiceImpl;
 	
-	@SuppressWarnings("deprecation")
+	
 	@Bean
-	public PasswordEncoder passwordEncorder() {
-		return NoOpPasswordEncoder.getInstance();
+	public BCryptPasswordEncoder passwordEncorder() {
+		return new BCryptPasswordEncoder();
 	}
 	
 	@Bean(name=BeanIds.AUTHENTICATION_MANAGER)
@@ -60,7 +58,7 @@ public class MyAppSecurityConfig extends WebSecurityConfigurerAdapter {
 		       .cors()
 		       .disable()
 		       .authorizeRequests()
-		       .antMatchers("/generate-token","/user")
+		       .antMatchers("/generate-token","/user/**")
 		       .permitAll()
 		       .antMatchers(HttpMethod.OPTIONS).permitAll()
 		       .anyRequest().authenticated()

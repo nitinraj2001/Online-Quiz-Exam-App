@@ -1,3 +1,4 @@
+import { ProfileComponent } from './pages/profile/profile.component';
 import { UserGuard } from './service/user.guard';
 import { AdminGuard } from './service/admin.guard';
 import { UserdashboardComponent } from './pages/user/userdashboard/userdashboard.component';
@@ -7,6 +8,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 
 
 const routes: Routes = [
@@ -14,8 +17,16 @@ const routes: Routes = [
   {path:'home',component:HomeComponent,pathMatch:'full'},
   {path:'signup',component:SignupComponent,pathMatch:'full'},
   {path:'login',component:LoginComponent,pathMatch:'full'},
-  {path:'admin',component:AdmindashboardComponent,pathMatch:'full',canActivate:[AdminGuard]},
+  {path:'admin',component:AdmindashboardComponent,canActivate:[AdminGuard],
+   children:[
+    {
+      path:'',component:WelcomeComponent,
+        }, 
+    {
+     path:'profile',component:ProfileComponent,
+       }]},
   {path:'user',component:UserdashboardComponent,pathMatch:'full',canActivate:[UserGuard]},
+  {path:'forgot-password',component:ForgotPasswordComponent,pathMatch:'full'},
 ];
 
 @NgModule({

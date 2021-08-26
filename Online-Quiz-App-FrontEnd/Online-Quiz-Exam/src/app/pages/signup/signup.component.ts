@@ -26,9 +26,9 @@ export class SignupComponent implements OnInit {
       this.snakebar.open("username is required!!",'ok',{duration:3000});
     }
     console.log(this.User);
-    this.UserService.registerUser(this.User).subscribe((data)=>{console.log(data),Swal.fire("user is successfully registered")},(error)=>this.snakebar.open("something went wrong!! please try again...",'ok',{duration:30000}));
+    this.UserService.registerUser(this.User).subscribe((data)=>{console.log(data),Swal.fire("user is successfully registered"),this.router.navigate(['login']);},(error)=>this.snakebar.open("something went wrong!! please try again...",'ok',{duration:30000}));
     //window.location.href='/login';
-    this.router.navigate(['login']);
+    
   }
 
 }
