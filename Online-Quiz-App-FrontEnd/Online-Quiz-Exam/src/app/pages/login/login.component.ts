@@ -2,7 +2,7 @@ import { LoginService } from './../../service/login.service';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
-import { ActivatedRoute, RouterLinkActive } from '@angular/router';
+import { ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +13,20 @@ export class LoginComponent implements OnInit {
 
   userData:any={username:'',password:''};
 
-  constructor(private snakebar:MatSnackBar,private loginservice:LoginService,private route:ActivatedRoute) { }
+  constructor(private snakebar:MatSnackBar,private loginservice:LoginService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
+    if(this.loginservice.IsloggedIn()){
+      if(this.loginservice.getUserAuthority()=='ADMIN'){
+      this.router.navigate(['admin']);
+      }
+      else if(this.loginservice.getUserAuthority()=='USER'){
+       this.router.navigate(['user']);
+      }
+      else{
+        this.loginservice.logout();
+      }
+    }
   }
 
   login(){
@@ -42,20 +53,25 @@ export class LoginComponent implements OnInit {
              this.loginservice.setUserDetails(data),
              console.log("currently login user is "+JSON.stringify(data))
              if(this.loginservice.getUserAuthority()=='ADMIN'){
-                window.location.href='/admin';
+                //window.location.href='/admin';
+                this.router.navigate(['admin']);
+                this.loginservice.loginStatusSubject.next(true);
+                this.snakebar.open("admin is successfully logged in","ok");
              }
              else if(this.loginservice.getUserAuthority()=='USER'){
-              window.location.href='/user';
-              this.snakebar.open("user is successfully logged in");
+              //window.location.href='/user';
+              this.router.navigate(['user']);
+              this.loginservice.loginStatusSubject.next(true);
+              this.snakebar.open("user is successfully logged in","ok");
              }
              else{
                this.loginservice.logout();
              }
            },
-           (error)=>this.snakebar.open("no user is currently logged in",'',{duration:3000})
+           (error)=>this.snakebar.open("no user is currently logged in",'ok',{duration:3000})
            )
         },
-        (error)=>this.snakebar.open("invalid details!! please try again with valid credentials",'',{duration:3000}
+        (error)=>this.snakebar.open("invalid details!! please try again with valid credentials",'ok',{duration:3000}
         ));
   }
 
