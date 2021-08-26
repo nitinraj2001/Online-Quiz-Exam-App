@@ -4,10 +4,16 @@
 </a>
    <span><button mat-raised-button color="primary" routerLink="/home"> My Pariksha App</button></span>
    <span class="example-spacer"></span>
-   <a routerLink="/signup" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" style="margin-right: 4%;">
+   <a *ngIf="!loginservice.IsloggedIn()" routerLink="/signup" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" style="margin-right: 4%;">
      Register
    </a>
-   <a routerLink="/login" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" style="margin-right:2%;">
+   <a *ngIf="!loginservice.IsloggedIn()" routerLink="/login" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" style="margin-right:2%;">
     Login
+  </a>
+  <a *ngIf="loginservice.IsloggedIn()"  routerLink="/login" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" style="margin-right:6%;">
+    {{loginservice.getUserDetails().username}}
+  </a>
+  <a *ngIf="loginservice.IsloggedIn()" (click)="logout()" routerLink="/login" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" style="margin-right:2%;">
+    Logout
   </a>
  </mat-toolbar>

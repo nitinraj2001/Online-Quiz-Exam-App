@@ -3,6 +3,7 @@ import { User } from './../../user';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +14,7 @@ export class SignupComponent implements OnInit {
 
   User:User={username:'',firstname:'',lastname:'',email:'',phonenumber:'',password:''};
 
-  constructor(private UserService:UserService,private snakebar:MatSnackBar) { }
+  constructor(private UserService:UserService,private snakebar:MatSnackBar,private router:Router) { }
 
 
   ngOnInit(): void {
@@ -26,7 +27,8 @@ export class SignupComponent implements OnInit {
     }
     console.log(this.User);
     this.UserService.registerUser(this.User).subscribe((data)=>{console.log(data),Swal.fire("user is successfully registered")},(error)=>this.snakebar.open("something went wrong!! please try again...",'ok',{duration:30000}));
-
+    //window.location.href='/login';
+    this.router.navigate(['login']);
   }
 
 }

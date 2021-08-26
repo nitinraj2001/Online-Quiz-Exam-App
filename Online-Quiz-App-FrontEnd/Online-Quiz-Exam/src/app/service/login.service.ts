@@ -1,3 +1,4 @@
+import { User } from './../user';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import baseUrl from './helper';
@@ -8,6 +9,10 @@ import baseUrl from './helper';
 export class LoginService {
 
   constructor(private http:HttpClient) { }
+
+  getCurrentUser(){
+    return this.http.get(`${baseUrl}/current-user`);
+  }
 
   generatejwtToken(userData:any){
      return this.http.post(`${baseUrl}/generate-token`,userData);
@@ -30,6 +35,7 @@ export class LoginService {
 
   logout(){
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     return true;
   }
 
@@ -52,4 +58,12 @@ export class LoginService {
       return null;
     }
   }
+
+  getUserAuthority(){
+    let user=localStorage.getItem("user");
+    let userauthority=JSON.parse(user).authorities[0].authority;
+    console.log("user authority is: "+userauthority);
+    return userauthority;
+  }
+  
 }
