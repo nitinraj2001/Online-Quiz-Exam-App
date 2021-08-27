@@ -30,7 +30,7 @@ public class CategoryController {
 	}
 	
 	@GetMapping("/{categoryId}")
-	public Category getCategory(@PathVariable Long cid) throws Exception {
+	public Category getCategory(@PathVariable("categoryId") Long cid) throws Exception {
 		Category category=this.categoryService.getCategoryById(cid);
 		if(category==null) {
 			throw new Exception("Category not found exception");
@@ -54,7 +54,7 @@ public class CategoryController {
 	}
 	
 	@DeleteMapping("/{categoryId}")
-	public void deleteCategory(@PathVariable Long cid) throws Exception {
+	public void deleteCategory(@PathVariable("categoryId") Long cid) throws Exception {
 		Category category=this.categoryService.getCategoryById(cid);
 		if(category==null) {
 			throw new Exception("Category not found exception");
