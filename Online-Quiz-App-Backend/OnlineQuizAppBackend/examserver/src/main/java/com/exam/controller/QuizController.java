@@ -23,7 +23,7 @@ public class QuizController {
 	@Autowired
 	private QuizService quizService;
 
-	@PostMapping("/add-quiz")
+	@PostMapping("/add")
 	public ResponseEntity<Quiz> addQuiz(@RequestBody Quiz quiz){
 		Quiz theQuiz=this.quizService.addQuiz(quiz);
 		return ResponseEntity.ok(theQuiz);

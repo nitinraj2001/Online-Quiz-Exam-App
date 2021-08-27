@@ -42,7 +42,8 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public Category getCategoryById(Long cid) throws Exception {
-		Category category=this.categoryRepository.getById(cid);
+		Category category=this.categoryRepository.findById(cid).get();
+		System.out.println("category data fetch from db is "+category.getTitle()+" "+category.getDescription()+" "+category.getCid());
 		return category;
 	}
 

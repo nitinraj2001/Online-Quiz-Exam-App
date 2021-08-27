@@ -30,12 +30,14 @@ public class CategoryController {
 	}
 	
 	@GetMapping("/{categoryId}")
-	public Category getCategory(@PathVariable("categoryId") Long cid) throws Exception {
+	public ResponseEntity<Category> getCategory(@PathVariable("categoryId") Long cid) throws Exception {
+		System.out.println("Category id requested from the user is "+cid);
 		Category category=this.categoryService.getCategoryById(cid);
 		if(category==null) {
 			throw new Exception("Category not found exception");
 		}
-		return category;
+		System.out.println("category data fetch from db is "+category.getTitle()+" "+category.getDescription()+" "+category.getCid());
+		return ResponseEntity.ok(category);
 	}
 	
 	@GetMapping("/getAllCategory")

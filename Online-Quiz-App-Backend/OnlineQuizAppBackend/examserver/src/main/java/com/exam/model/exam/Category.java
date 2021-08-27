@@ -52,6 +52,14 @@ public class Category {
 		this.description = description;
 	}
 
+	
+
+	public Category(String title, String description) {
+		super();
+		this.title = title;
+		this.description = description;
+	}
+
 	public Set<Quiz> getQuizzes() {
 		return quizzes;
 	}
@@ -64,14 +72,6 @@ public class Category {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Category(Long cid, String title, String description, Set<Quiz> quizzes) {
-		super();
-		this.cid = cid;
-		this.title = title;
-		this.description = description;
-		this.quizzes = quizzes;
-	}
-	
 
+	
 }

@@ -42,7 +42,7 @@ public class QuesServiceImpl implements QuestionService {
 
 	@Override
 	public void deletequestion(Long quesId) throws Exception {
-		Question question=this.questionRepository.getById(quesId);
+		Question question=this.questionRepository.findById(quesId).get();
 		if(question==null) {
 			throw new Exception("Question is not found please enter valid ques id");
 		}
@@ -52,7 +52,7 @@ public class QuesServiceImpl implements QuestionService {
 
 	@Override
 	public Question getQuestionById(Long quesId) throws Exception {
-		Question question=this.questionRepository.getById(quesId);
+		Question question=this.questionRepository.findById(quesId).get();
 		if(question==null) {
 			throw new Exception("Question is not found please enter valid ques id");
 		}

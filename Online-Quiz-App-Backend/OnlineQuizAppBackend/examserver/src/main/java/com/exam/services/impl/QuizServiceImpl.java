@@ -36,7 +36,7 @@ public class QuizServiceImpl implements QuizService {
 
 	@Override
 	public Quiz getQuizById(Long qid) throws Exception {
-		Quiz quiz=this.quizRepository.getById(qid);
+		Quiz quiz=this.quizRepository.findById(qid).get();
 		if(quiz==null) {
 			throw new Exception("Quiz not found exception");
 		}
@@ -46,7 +46,7 @@ public class QuizServiceImpl implements QuizService {
 	@Override
 	public void deleteQuiz(Long qid) throws Exception {
 		
-		Quiz quiz=this.quizRepository.getById(qid);
+		Quiz quiz=this.quizRepository.findById(qid).get();
 		if(quiz==null) {
 			throw new Exception("Quiz not found exception");
 		}
