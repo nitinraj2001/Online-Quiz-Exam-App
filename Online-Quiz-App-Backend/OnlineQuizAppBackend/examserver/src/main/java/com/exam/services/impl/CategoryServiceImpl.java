@@ -36,10 +36,6 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public void deleteCategory(Long cid) throws Exception {
-		Category category=this.categoryRepository.getById(cid);
-		if(category==null) {
-			throw new Exception("Category not found exception");
-		}
 		this.categoryRepository.deleteById(cid);
 
 	}
@@ -47,9 +43,6 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public Category getCategoryById(Long cid) throws Exception {
 		Category category=this.categoryRepository.getById(cid);
-		if(category==null) {
-			throw new Exception("Category not found exception");
-		}
 		return category;
 	}
 
