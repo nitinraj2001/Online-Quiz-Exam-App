@@ -32,9 +32,7 @@ export class LoginService {
     if(tokenStr==null||tokenStr==''||tokenStr==undefined){
       return false;
     }
-    else{
-      return true;
-    }
+    return true;
   }
 
   logout(){

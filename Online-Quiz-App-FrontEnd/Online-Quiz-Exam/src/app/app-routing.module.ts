@@ -22,6 +22,9 @@ const routes: Routes = [
     {
       path:'',component:WelcomeComponent,
         }, 
+        {
+          path:'home',component:WelcomeComponent,
+            }, 
     {
      path:'profile',component:ProfileComponent,
        }]},

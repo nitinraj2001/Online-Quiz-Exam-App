@@ -1,1 +1,47 @@
-<p>profile works!</p>
+<mat-card>
+    <h1 class="text-center"><I>YOUR PROFILE DETAIL'S</I></h1>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="container">
+                <div class="container" class="text-center">
+                    <img src="https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png" class="profile-image">
+                    <h3>{{user.firstname.charAt(0).toUpperCase()+user.firstname.slice(1)}} {{user.lastname.charAt(0).toUpperCase()+user.lastname.slice(1)}}</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                       <table class="table text-center border-collapsed">
+                           <tr>
+                               <td>Username</td>
+                               <td>{{user.username}}</td>
+                            </tr>
+                            <tr>
+                                <td>User Id</td>
+                                <td>EXAM{{user.userId}}</td>
+                             </tr>
+                             <tr>
+                                <td>User Email Id</td>
+                                <td>{{user.email}}</td>
+                             </tr>
+                             <tr>
+                                <td>Phone Number</td>
+                                <td>{{user.phonenumber}}</td>
+                             </tr>
+                             <tr>
+                                <td>Role</td>
+                                <td>{{user.authorities[0].authority}}</td>
+                             </tr>
+                             <tr>
+                                <td>Status</td>
+                                <td>{{user.enabled?"ACTIVE":"DISABLED"}}</td>
+                             </tr>
+                       </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+        <button mat-raised-button color="primary">UPDATE</button>
+        <button mat-raised-button color="accent" style="margin-left:4%;">SHARE</button>
+      </mat-card-actions>
+</mat-card>
