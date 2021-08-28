@@ -4,6 +4,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.exam.services.CategoryService;
 
 @RestController
 @RequestMapping("/category")
+@CrossOrigin("*")
 public class CategoryController {
 	
 	@Autowired
@@ -56,12 +58,15 @@ public class CategoryController {
 	}
 	
 	@DeleteMapping("/{categoryId}")
-	public void deleteCategory(@PathVariable("categoryId") Long cid) throws Exception {
+	public ResponseEntity<?>deleteCategory(@PathVariable("categoryId") Long cid) throws Exception {
+		System.out.println("category to be deleted with request category id is: "+cid);
 		Category category=this.categoryService.getCategoryById(cid);
 		if(category==null) {
 			throw new Exception("Category not found exception");
 		}
 		this.categoryService.deleteCategory(cid);
+		
+		return ResponseEntity.ok("category with category id: "+cid+" is deleted successfully");
 	}
 	
 }

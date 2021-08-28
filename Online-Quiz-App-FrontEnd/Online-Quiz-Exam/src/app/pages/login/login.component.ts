@@ -1,7 +1,6 @@
 import { LoginService } from './../../service/login.service';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import Swal from 'sweetalert2';
 import { ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
 
 @Component({

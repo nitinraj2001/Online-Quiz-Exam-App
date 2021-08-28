@@ -10,6 +10,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 
 
 const routes: Routes = [
@@ -27,7 +29,13 @@ const routes: Routes = [
             }, 
     {
      path:'profile',component:ProfileComponent,
-       }]},
+       },
+       {
+        path:'categories',component:ViewCategoriesComponent,
+          },
+          {
+            path:'add-category',component:AddCategoryComponent,
+              }]},
   {path:'user',component:UserdashboardComponent,pathMatch:'full',canActivate:[UserGuard]},
   {path:'forgot-password',component:ForgotPasswordComponent,pathMatch:'full'},
 ];
