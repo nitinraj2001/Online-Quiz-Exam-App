@@ -1,0 +1,8 @@
+.example-header-image {
+    background-image: url('../../../../assets/exam-logo.png');
+    background-size: cover;
+  }
+
+  .text-center{
+    text-decoration: center;
+  }

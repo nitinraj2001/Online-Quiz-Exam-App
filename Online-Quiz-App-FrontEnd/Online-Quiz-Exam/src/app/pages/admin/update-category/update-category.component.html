@@ -1,0 +1,21 @@
+<div class="mat-card">
+    <div mat-subheader>Update Existing Category</div>
+    <mat-card-content>
+        <form (ngSubmit)="updateCategory()">
+            <!--This is used for inputs category title-->
+       <mat-form-field class="full-width" appearance="outline">
+           <mat-label><b>Title</b></mat-label>
+           <input required name="title" matInput placeholder="Enter title for category" [(ngModel)]="category.title">    
+       </mat-form-field>
+       <!--This is used for quiz description inputs-->
+       <mat-form-field class="full-width" appearance="outline">
+           <mat-label><b>Quiz Description</b></mat-label>
+           <input required  name="description" matInput placeholder="Enter description for category" [(ngModel)]="category.description">
+       </mat-form-field>
+       <div class="container text-center">
+           <button type="submit" mat-raised-button color="primary">Update Category</button>
+           <button type="reset" style="margin-left: 20px;" color="accent" mat-raised-button>Clear</button>
+       </div>
+       </form>
+    </mat-card-content>
+</div>

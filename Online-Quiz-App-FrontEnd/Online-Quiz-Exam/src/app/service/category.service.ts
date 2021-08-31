@@ -21,4 +21,12 @@ export class CategoryService {
     console.log(cid);
     return this.http.delete(`${baseUrl}/category/${cid}`);
   }
+
+  public getCategory(cid:number){
+    return this.http.get(`${baseUrl}/category/${cid}`);
+  }
+
+  public updateCategory(category:any){
+    return this.http.put(`${baseUrl}/category/updateCategory`,category);
+  }
 }

@@ -22,8 +22,13 @@ export class SignupComponent implements OnInit {
   }
 
   FormSubmit(){
-    if(this.User.username==''||this.User.username==null||this.User.email==null||this.User.firstname==null||this.User.lastname==null||this.User.phonenumber==null){
+    if(this.User.username==''||this.User.username==null){
       this.snakebar.open("username is required!!",'ok',{duration:3000});
+      return;
+    }
+    if(this.User.email==null||this.User.firstname==null||this.User.lastname==null||this.User.phonenumber==null){
+      this.snakebar.open("user email is required!!",'ok',{duration:3000});
+      return;
     }
     console.log(this.User);
     this.UserService.registerUser(this.User).subscribe((data)=>{console.log(data),Swal.fire("user is successfully registered"),this.router.navigate(['login']);},(error)=>this.snakebar.open("something went wrong!! please try again...",'ok',{duration:30000}));

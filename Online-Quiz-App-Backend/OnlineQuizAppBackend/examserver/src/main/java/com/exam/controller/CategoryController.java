@@ -21,7 +21,7 @@ import com.exam.services.CategoryService;
 @RequestMapping("/category")
 @CrossOrigin("*")
 public class CategoryController {
-	
+
 	@Autowired
 	private CategoryService categoryService;
 

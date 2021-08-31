@@ -1,3 +1,6 @@
+import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
+import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
+import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { UserGuard } from './service/user.guard';
 import { AdminGuard } from './service/admin.guard';
@@ -12,6 +15,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
 
 
 const routes: Routes = [
@@ -35,7 +39,19 @@ const routes: Routes = [
           },
           {
             path:'add-category',component:AddCategoryComponent,
-              }]},
+              },
+              {
+                path:'updateCategory/:cid',component:UpdateCategoryComponent,
+                  },
+                  {
+                    path:'view-quizzes',component:ViewQuizzesComponent,
+                      },
+                      {
+                        path:'add-quiz',component:AddQuizComponent,
+                          },
+                          {
+                            path:'updateQuiz/:qid',component:UpdateQuizComponent,
+                              },]},
   {path:'user',component:UserdashboardComponent,pathMatch:'full',canActivate:[UserGuard]},
   {path:'forgot-password',component:ForgotPasswordComponent,pathMatch:'full'},
 ];

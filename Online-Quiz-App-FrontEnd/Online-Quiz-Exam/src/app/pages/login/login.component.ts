@@ -1,3 +1,4 @@
+import { User } from './../../user';
 import { LoginService } from './../../service/login.service';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,6 +12,8 @@ import { ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   userData:any={username:'',password:''};
+
+  user:any;
 
   constructor(private snakebar:MatSnackBar,private loginservice:LoginService,private route:ActivatedRoute,private router:Router) { }
 
