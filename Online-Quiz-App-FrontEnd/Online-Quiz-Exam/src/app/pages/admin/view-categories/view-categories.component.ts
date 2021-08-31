@@ -33,9 +33,14 @@ export class ViewCategoriesComponent implements OnInit {
     console.log("category to be deleted with cid: "+cid);
     this.categoryService.deleteCategory(cid).subscribe((data)=>{
       console.log(data);
+      Swal.fire("success!!","category is successfully deleted","success");
+      this.router.navigate(['/admin/categories']);
+    },
+    (error)=>{
+      console.log(error);
+      Swal.fire("err!!","category can't be deleted try again!!","error");
     })
-    Swal.fire("success!!","category is successfully deleted","success");
-   
+    
   }
 
 }

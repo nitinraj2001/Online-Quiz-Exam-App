@@ -66,7 +66,7 @@ public class CategoryController {
 		}
 		this.categoryService.deleteCategory(cid);
 		
-		return ResponseEntity.ok("category with category id: "+cid+" is deleted successfully");
+		return ResponseEntity.ok(category);
 	}
 	
 }

@@ -32,6 +32,8 @@ import { UpdateCategoryComponent } from './pages/admin/update-category/update-ca
 import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
 import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,8 @@ import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.compo
     MatToolbarModule,
     MatIconModule,
     MatListModule,
+    MatSlideToggleModule,
+    MatSelectModule
     
   ],
   providers: [

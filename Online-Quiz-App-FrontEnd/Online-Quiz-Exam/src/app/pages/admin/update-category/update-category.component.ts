@@ -31,6 +31,14 @@ export class UpdateCategoryComponent implements OnInit {
   }
 
   updateCategory(){
+    if(this.category.title==null||this.category.title.trim()==''){
+      this.snakebar.open("title can't be empty","ok",{duration:3000});
+      return;
+   }
+   if(this.category.description==null||this.category.description.trim()==''){
+     this.snakebar.open("description can't be empty","ok",{duration:3000});
+     return;
+  }
      this.categoryService.updateCategory(this.category).subscribe(
        (data)=>{
          console.log(data);

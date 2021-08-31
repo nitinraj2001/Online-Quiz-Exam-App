@@ -1,22 +1,52 @@
-<div class="mat-card">
-    <div mat-subheader>Add New Category</div>
-    <mat-card-content>
-        <form (ngSubmit)="addQuiz()">
-            <!--This is used for inputs category title-->
-       <mat-form-field class="full-width" appearance="outline">
-           <mat-label><b>Title</b></mat-label>
-           <input required name="title" matInput placeholder="Enter title for category" [(ngModel)]="quiz.title">    
-       </mat-form-field>
-       <!--This is used for quiz description inputs-->
-       <mat-form-field class="full-width" appearance="outline">
-           <mat-label><b>Quiz Description</b></mat-label>
-           <input required  name="description" matInput placeholder="Enter description for category" [(ngModel)]="quiz.description">
-       </mat-form-field>
-       <div class="container text-center">
-           <button type="submit" mat-raised-button color="primary">Add Category</button>
-           <button type="reset" style="margin-left: 20px;" color="accent" mat-raised-button>Clear</button>
-       </div>
-       </form>
-    </mat-card-content>
+<div class="div wrapper">
+    <div class="div container">
+        <div class="mat-card">
+            <div mat-subheader><h1 style="color:brown">Add New Quiz</h1></div>
+            <mat-card-content>
+                <form (ngSubmit)="addQuiz()">
+                    <!--This is used for inputs category title-->
+               <mat-form-field class="full-width" appearance="outline">
+                   <mat-label><b>Title</b></mat-label>
+                   <input required name="title" matInput placeholder="Enter title for category" [(ngModel)]="quiz.title">    
+               </mat-form-field>
+               <!--This is used for quiz description inputs-->
+               <mat-form-field class="full-width" appearance="outline">
+                   <mat-label><b>Quiz Description</b></mat-label>
+                   <input required  name="description" matInput placeholder="Enter description for category" [(ngModel)]="quiz.description">
+               </mat-form-field>
+               <mat-form-field appearance="fill"  class="full-width">
+                <mat-label>Select any category</mat-label>
+                <mat-select name="category" [(ngModel)]="quiz.category.cid">
+                   <mat-option *ngFor="let categoryOfQuiz of category" [value]="categoryOfQuiz.cid">
+                      {{categoryOfQuiz.title}}
+                   </mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+               <mat-form-field appearance="fill">
+                  <mat-label>Enter Max marks of quiz</mat-label>
+                  <input  name="maxMarks" required matInput placeholder="Enter max Marks" required [(ngModel)]="quiz.maxMarks">
+               </mat-form-field>
+        
+               <mat-form-field appearance="fill" style="margin-left: 5%;">
+                     <mat-label>Number of questions in quiz</mat-label>
+                     <input name="numberOfQuestions" required matInput placeholder="Enter number of questions in quiz" [(ngModel)]="quiz.numberOfQuestions">
+                </mat-form-field>
+                <section class="example-section">
+                    <mat-slide-toggle name="active" class="example-margin" [(ngModel)]="quiz.active" >
+                      Publish Quiz for users!
+                    </mat-slide-toggle>
+                  </section>
+               <div class="container">
+                   <button type="submit" mat-raised-button color="primary">Add Quiz</button>
+                   <button type="reset" style="margin-left: 20px;" color="accent" mat-raised-button>Clear</button>
+               </div>
+               </form>
+            </mat-card-content>
+        </div>
+    </div>
 </div>
+
+{{quiz|json}}
+
 
