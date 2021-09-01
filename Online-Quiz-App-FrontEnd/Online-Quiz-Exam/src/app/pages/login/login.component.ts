@@ -33,11 +33,11 @@ export class LoginComponent implements OnInit {
 
   login(){
     if(this.userData.username==null||this.userData.username==''){
-      this.snakebar.open("invalid user name please try with valid user","",{duration:3000});
+      this.snakebar.open("invalid user name please try with valid user","ok",{duration:3000});
       return;
     }
     if(this.userData.password==null||this.userData.password==''){
-      this.snakebar.open("invalid user password please try with valid password","",{duration:3000});
+      this.snakebar.open("invalid user password please try with valid password","ok",{duration:3000});
       return;
     }
     console.log("user data is "+this.userData.username,+this.userData.password);

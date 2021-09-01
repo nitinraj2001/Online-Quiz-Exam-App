@@ -1,0 +1,11 @@
+<h1 style="margin-left:5px; margin-top: 2%; ">Question of {{title}}</h1>
+<mat-card-actions>
+  <button  mat-raised-button color="primary" style="margin-left:30%;">Add Questions of {{title}}</button>
+</mat-card-actions>
+<div *ngIf="questions.length>0" class="container mt-sm-5 my-1" style="margin-top: 3%; margin-left:1%; margin-bottom:3%;">
+    <div class="question ml-sm-5 pl-sm-5 pt-2" *ngFor="let question of questions">
+        <div class="py-2 h5"><b>Q. {{question.content}}</b></div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options" style="margin-top: 5%;"> <label class="options">{{question.option1}} <input type="radio" name="radio"> <span class="checkmark"></span> </label> <label class="options">{{question.option2}}<input type="radio" name="radio"> <span class="checkmark"></span> </label> <label class="options">{{question.option3}}<input type="radio" name="radio"> <span class="checkmark"></span> </label> <label class="options">{{question.option4}} <input type="radio" name="radio"> <span class="checkmark"></span> </label> </div>
+        <p>Correct Answer : {{question.answer}}</p>
+    </div>
+</div>

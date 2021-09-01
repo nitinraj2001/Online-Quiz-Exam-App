@@ -22,6 +22,15 @@ public class Question {
 	
 	private String option3;
 	
+private String option4;
+	
+	private String image;
+	
+	private String answer;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Quiz quiz;
+	
 	public Long getQuesId() {
 		return quesId;
 	}
@@ -94,14 +103,7 @@ public class Question {
 		this.quiz = quiz;
 	}
 
-	private String option4;
 	
-	private String image;
-	
-	private String answer;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	private Quiz quiz;
 
 	public Question(Long quesId, String content, String option1, String option2, String option3, String option4,
 			String image, String answer, Quiz quiz) {

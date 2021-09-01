@@ -1,3 +1,4 @@
+import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questions.component';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
 import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
@@ -51,7 +52,10 @@ const routes: Routes = [
                           },
                           {
                             path:'updateQuiz/:qid',component:UpdateQuizComponent,
-                              },]},
+                              },
+                              {
+                                path:'view-questions/:qid/:title',component:ViewQuestionsComponent,
+                                  },]},
   {path:'user',component:UserdashboardComponent,pathMatch:'full',canActivate:[UserGuard]},
   {path:'forgot-password',component:ForgotPasswordComponent,pathMatch:'full'},
 ];

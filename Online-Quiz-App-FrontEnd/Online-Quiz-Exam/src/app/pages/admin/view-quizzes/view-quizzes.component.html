@@ -13,12 +13,13 @@
         <p>{{quiz.description}}</p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-flat-button color="accent">Questions</button>
-        <button [routerLink]="['/admin/updateQuiz',quiz.qid]" mat-flat-button color="accent" style="margin-left: 10px;">Update Quiz</button>
-        <button [routerLink]="['/admin/updateQuiz',quiz.qid]" mat-flat-button color="accent" style="margin-left: 10px;">Delete Quiz</button>
-        <button mat-flat-button color="accent" style="margin-left: 10px;">Quiz Attempts</button>
+        <button (click)="sendQuizDetails(quiz.qid,quiz.title)" mat-flat-button color="accent">Questions</button>
         <button mat-stroked-button color="accent">Max Marks {{quiz.maxMarks}}</button>
         <button mat-stroked-button color="accent">Number of Questions: {{quiz.numberOfQuestions}}</button>
+        <button [routerLink]="['/admin/updateQuiz',quiz.qid]" mat-flat-button color="accent" style="margin-left: 10px;">Update Quiz</button>
+        <button (click)="deleteQuiz(quiz.qid)" mat-flat-button color="warn" style="margin-left: 10px;">Delete Quiz</button>
+        <button mat-flat-button color="accent" style="margin-left: 10px;">Quiz Attempts</button>
+        
         
     </mat-card-actions>
 </mat-card>

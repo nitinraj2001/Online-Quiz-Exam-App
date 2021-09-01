@@ -51,6 +51,15 @@ public class QuestionController {
 		return ResponseEntity.ok(listOfQuestions);
 	}
 	
+	@GetMapping("/admin/{quizId}")
+	public ResponseEntity<?> getAllQuestionForAdmin(@PathVariable("quizId") Long quizId) throws Exception{
+		System.out.println("quiz to be fetch with id :"+quizId);
+		Quiz quiz=this.quizService.getQuizById(quizId);
+		Set<Question> question=quiz.getQuestion();
+		List<Question> listOfQuestions=new ArrayList<>(question);
+		return ResponseEntity.ok(listOfQuestions);
+	}
+	
 	@GetMapping("/{quesId}")
 	public Question getQuestion(@PathVariable("quesId") Long quesId) throws Exception {
 		return this.questionService.getQuestionById(quesId);
