@@ -12,4 +12,20 @@ export class QuestionService {
   public getAllQuestions(quesId:any){
      return this.http.get(`${baseUrl}/question/admin/${quesId}`);
   }
+
+  public getQuestion(quesId:any){
+    return this.http.get(`${baseUrl}/question/ById/${quesId}`);
+ }
+
+  public addQuestion(question: any){
+    return this.http.post(`${baseUrl}/question/add-questions`,question);
+  }
+
+  public updateQuestion(question: any){
+    return this.http.put(`${baseUrl}/question/update-questions`,question);
+  }
+
+  public deleteQuestion(qid:any){
+    return this.http.delete(`${baseUrl}/question/${qid}`);
+  }
 }

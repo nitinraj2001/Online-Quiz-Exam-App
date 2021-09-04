@@ -40,20 +40,20 @@ export class LoginComponent implements OnInit {
       this.snakebar.open("invalid user password please try with valid password","ok",{duration:3000});
       return;
     }
-    console.log("user data is "+this.userData.username,+this.userData.password);
+    //console.log("user data is "+this.userData.username,+this.userData.password);
     this.generateToken();
   }
 
   generateToken(){
      this.loginservice.generatejwtToken(this.userData).subscribe(
        (data)=>{
-         console.log(data),
+         //console.log(data),
          //Swal.fire("user is successfully login"),
          this.loginservice.loginUser(JSON.parse(JSON.stringify(data)).token),
          this.loginservice.getCurrentUser().subscribe(
            (data)=>{
-             this.loginservice.setUserDetails(data),
-             console.log("currently login user is "+JSON.stringify(data))
+             this.loginservice.setUserDetails(data);
+             //console.log("currently login user is "+JSON.stringify(data))
              if(this.loginservice.getUserAuthority()=='ADMIN'){
                 //window.location.href='/admin';
                 this.router.navigate(['admin']);

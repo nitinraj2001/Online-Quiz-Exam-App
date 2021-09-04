@@ -1,3 +1,5 @@
+import { UserWelcomePageComponent } from './pages/user/user-welcome-page/user-welcome-page.component';
+import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questions.component';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
@@ -17,6 +19,7 @@ import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
+import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 
 
 const routes: Routes = [
@@ -55,8 +58,22 @@ const routes: Routes = [
                               },
                               {
                                 path:'view-questions/:qid/:title',component:ViewQuestionsComponent,
-                                  },]},
-  {path:'user',component:UserdashboardComponent,pathMatch:'full',canActivate:[UserGuard]},
+                                  },
+                                  {
+                                    path:'add-question/:qid/:title',component:AddQuestionComponent,
+                                      },
+                                      {
+                                        path:'update-question/:qid/:title',component:UpdateQuestionComponent,
+                                          },]},
+  {path:'user',component:UserdashboardComponent,pathMatch:'full',canActivate:[UserGuard],
+    children:[{
+      path:'',component:UserWelcomePageComponent,
+    }, 
+    {
+      path:'home',component:UserWelcomePageComponent,
+        }, 
+    ]    
+},
   {path:'forgot-password',component:ForgotPasswordComponent,pathMatch:'full'},
 ];
 

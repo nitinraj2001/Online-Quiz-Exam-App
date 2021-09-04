@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +24,7 @@ import com.exam.services.QuizService;
 
 @RestController
 @RequestMapping("/question")
+@CrossOrigin("*")
 public class QuestionController {
 	
 	@Autowired 
@@ -30,12 +33,12 @@ public class QuestionController {
 	@Autowired
 	private QuizService quizService;
 	
-	@PostMapping("/add-questions")
+	@PostMapping(value="/add-questions",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Question> addQuestion(@RequestBody Question question){
 		return ResponseEntity.ok(this.questionService.addQuestion(question));
 	}
 	
-	@PutMapping("/update-questions")
+	@PutMapping(value="/update-questions",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Question> updateQuestion(@RequestBody Question question){
 		return ResponseEntity.ok(this.questionService.addQuestion(question));
 	}
@@ -60,7 +63,7 @@ public class QuestionController {
 		return ResponseEntity.ok(listOfQuestions);
 	}
 	
-	@GetMapping("/{quesId}")
+	@GetMapping("/ById/{quesId}")
 	public Question getQuestion(@PathVariable("quesId") Long quesId) throws Exception {
 		return this.questionService.getQuestionById(quesId);
 	}

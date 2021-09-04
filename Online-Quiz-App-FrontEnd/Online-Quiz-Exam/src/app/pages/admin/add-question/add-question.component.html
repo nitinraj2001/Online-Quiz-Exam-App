@@ -1,0 +1,46 @@
+<div class="div wrapper">
+    <div class="div container"> 
+       <mat-card>
+        <div mat-subheader><h1 style="color:brown">Add New Question</h1></div>
+        <mat-card-content>
+            <form (ngSubmit)="addQuestion()">
+                <!--This is used for inputs category title-->
+             <!--   <mat-form-field class="full-width" appearance="outline" >
+                    <mat-label><b>Enter Content of the Question</b></mat-label>
+                    <textarea matInput name="content" cols="35" rows="8" placeholder="Enter Question Text" required [(ngModel)]="question.content"></textarea>
+                </mat-form-field> -->
+
+                <ckeditor  [editor]="Editor" [innerHtml]="editorData" name="content" [(ngModel)]="question.content"></ckeditor>
+          
+           <mat-form-field appearance="fill">
+              <mat-label><b>Enter Option 1</b></mat-label>
+              <input  name="option1" required matInput placeholder="Enter option 1" required [(ngModel)]="question.option1">
+           </mat-form-field>
+    
+           <mat-form-field appearance="fill" style="margin-left: 5%;">
+                 <mat-label><b>Enter Option 2</b></mat-label>
+                 <input name="option2" required matInput placeholder="Enter option 2" required [(ngModel)]="question.option2">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label><b>Enter Option 3</b></mat-label>
+                <input  name="option3" required matInput placeholder="Enter option 3" required [(ngModel)]="question.option3">
+             </mat-form-field>
+      
+             <mat-form-field appearance="fill" style="margin-left: 5%;">
+                   <mat-label><b>Enter Option 4</b></mat-label>
+                   <input name="option4" required matInput placeholder="Enter option 4" required [(ngModel)]="question.option4">
+              </mat-form-field>
+            <!--This is used for quiz description inputs-->
+           <mat-form-field class="full-width" appearance="outline">
+            <mat-label><b>Enter Correct answer Of Above Question</b></mat-label>
+            <input required  name="content" matInput placeholder="Enter answer of the question" [(ngModel)]="question.answer">
+        </mat-form-field>
+           <div class="container">
+               <button type="submit" mat-raised-button color="primary">Add Question</button>
+               <button type="reset" style="margin-left: 20px;" color="accent" mat-raised-button>Clear</button>
+           </div>
+           </form>
+        </mat-card-content>
+       </mat-card>
+    </div>
+</div>

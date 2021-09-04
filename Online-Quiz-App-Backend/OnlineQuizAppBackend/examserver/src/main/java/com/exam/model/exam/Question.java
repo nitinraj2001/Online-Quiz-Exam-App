@@ -22,9 +22,9 @@ public class Question {
 	
 	private String option3;
 	
-private String option4;
+    private String option4;
 	
-	private String image;
+	private String image="default.png";
 	
 	private String answer;
 	

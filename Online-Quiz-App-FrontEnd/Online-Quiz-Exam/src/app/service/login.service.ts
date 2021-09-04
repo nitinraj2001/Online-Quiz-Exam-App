@@ -21,6 +21,10 @@ export class LoginService {
      return this.http.post(`${baseUrl}/generate-token`,userData);
   }
 
+  generatejwtTokenStatus(token:any){
+    return this.http.get(`${baseUrl}/jwt-token-status/${token}`,);
+ }
+
   loginUser(token){
     localStorage.setItem("token",token);
     
