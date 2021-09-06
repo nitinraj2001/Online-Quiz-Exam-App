@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.exam.model.exam.Category;
 import com.exam.model.exam.Quiz;
 import com.exam.services.QuizService;
 
@@ -62,6 +63,25 @@ public class QuizController {
 			throw new Exception("Quiz not found exception");
 		}
 		this.quizService.deleteQuiz(qid);
+	}
+	
+	@GetMapping("/Bycategory/{cid}")
+	public ResponseEntity<?> getQuizzesByCategoryId(@PathVariable("cid") Long cid){
+		Category category=new Category();
+		category.setCid(cid);
+		return ResponseEntity.ok(this.quizService.findQuizzesByCategoryId(category));
+	}
+	
+	@GetMapping("/active")
+	public ResponseEntity<?> getAllActiveQuizzes(){
+		return ResponseEntity.ok(this.quizService.findAllActiveQuiz());
+	}
+	
+	@GetMapping("/category/active/{cid}")
+	public ResponseEntity<?> getAllActiveQuizzesOfCategory(@PathVariable("cid") Long cid){
+		Category category=new Category();
+		category.setCid(cid);
+		return ResponseEntity.ok(this.quizService.findAllActiveQuizOfCategory(category));
 	}
 	
 }

@@ -65,6 +65,8 @@ public class QuestionController {
 	
 	@GetMapping("/ById/{quesId}")
 	public Question getQuestion(@PathVariable("quesId") Long quesId) throws Exception {
+		Question question=this.questionService.getQuestionById(quesId);
+		System.out.println("Question content is:"+question.getContent());
 		return this.questionService.getQuestionById(quesId);
 	}
 	

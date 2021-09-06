@@ -1,3 +1,7 @@
+import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component';
+import { InstructionComponent } from './pages/user/instruction/instruction.component';
+import { ViewAllQuizzesComponent } from './pages/user/view-all-quizzes/view-all-quizzes.component';
+import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
 import { UserWelcomePageComponent } from './pages/user/user-welcome-page/user-welcome-page.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questions.component';
@@ -64,16 +68,28 @@ const routes: Routes = [
                                       },
                                       {
                                         path:'update-question/:qid/:title',component:UpdateQuestionComponent,
-                                          },]},
-  {path:'user',component:UserdashboardComponent,pathMatch:'full',canActivate:[UserGuard],
+                                          },
+                                         ]},
+  {path:'user',component:UserdashboardComponent,canActivate:[UserGuard],
     children:[{
       path:'',component:UserWelcomePageComponent,
     }, 
     {
       path:'home',component:UserWelcomePageComponent,
         }, 
+        {
+          path:'profile',component:UserProfileComponent,
+        }, 
+        {
+          path:'quizzes/:cid',component:ViewAllQuizzesComponent,
+        }, 
+        {
+          path:'instructions/:qid',component:InstructionComponent,
+            },
     ]    
 },
+{path:'start-quiz/:qid',component:StartQuizComponent,pathMatch:'full',canActivate:[UserGuard],},
+
   {path:'forgot-password',component:ForgotPasswordComponent,pathMatch:'full'},
 ];
 

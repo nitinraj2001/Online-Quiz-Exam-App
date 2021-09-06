@@ -39,6 +39,9 @@ export class UpdateQuestionComponent implements OnInit {
     )
   }
 
+
+
+
   updateQuestion(){
 
   }

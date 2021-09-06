@@ -1,0 +1,44 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card>
+                    <mat-card-header>
+                      <mat-card-title>
+                          Read the instructions of this quiz carefully!!
+                      </mat-card-title>
+                      <mat-card-subtitle>
+                          One Step more to go
+                      </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content style="margin-left: 2%;">
+                       <h1>{{quiz.title}}</h1>
+                       <p>{{quiz.description}}</p>
+                       <mat-divider></mat-divider><br>
+                       <h1>Important Instructions</h1>
+                       <ul>
+                           <li>This quiz is only for practice purpose.</li>
+                           <li>You will have three attempts for this quiz with your highest score being recorded in the grade book.</li>
+                           <li>You will need to complete each of your attempts in one sitting, as you are allotted {{quiz.numberOfQuestions*2}} minutes to complete each attempt, otherwise quiz gets automatically submitted.</li>
+                           <li>You may review your answer-choices and compare them to the correct answers after your final attempt.</li>
+                           <li>This quiz consists of <b>{{quiz.numberOfQuestions}} </b> multiple-choice questions. Each of question has weightage of {{quiz.maxMarks/quiz.numberOfQuestions}} marks. <b>No negative marks for wrong question</b></li>
+                       </ul>
+                       <mat-divider></mat-divider><br>
+                       <h1>Attempting Quiz</h1>
+                       <ul>
+                           <li>Click <b>Start quiz</b> button in order to start the quiz</li>
+                           <li>The time will start counting at the moment you click on start quiz button.</li>
+                           <li>You can't resume the quiz, if interrupted due to any reason</li>
+                           <li>Click to next button in order to proceed next question.</li>
+                           <li><b>Click on submit button after completion of the quiz.</b></li>
+                           <li>Report of this quiz is automatically generated in PDF copy and sent to your registered email id.</li>
+                       </ul>
+                    </mat-card-content>
+                    <mat-card-actions class="text-center">
+                        <button mat-raised-button color="primary" (click)="startQuiz()">Start Quiz</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,10 +1,10 @@
 <mat-card>
     <mat-action-list>
         <div mat-subheader><h2>Menu</h2></div>
-        <button mat-list-item routerLink="/admin/home"><mat-icon mat-list-icon>home</mat-icon>Home</button>
-        <button mat-list-item routerLink="/admin/profile"><mat-icon mat-list-icon>account_circle</mat-icon>Profile</button>
-        <button mat-list-item  routerLink="/admin/categories"><mat-icon mat-list-icon>list</mat-icon>All Quizzes</button>
-        <button mat-list-item  routerLink="/admin/categories" *ngFor="let category of categories"><mat-icon mat-list-icon>list</mat-icon>{{category.title}}</button>
+        <button mat-list-item routerLink="/user/home"><mat-icon mat-list-icon>home</mat-icon>Home</button>
+        <button mat-list-item routerLink="/user/profile"><mat-icon mat-list-icon>account_circle</mat-icon>Profile</button>
+        <button mat-list-item  routerLink="/user/quizzes/0"><mat-icon mat-list-icon>list</mat-icon>All Quizzes</button>
+        <button mat-list-item  routerLink="/user/quizzes/{{category.cid}}" *ngFor="let category of categories"><mat-icon mat-list-icon>list</mat-icon>{{category.title}}</button>
         <button mat-list-item (click)="logout()"><mat-icon mat-list-icon>logout</mat-icon>Logout</button>
     </mat-action-list>
 </mat-card>

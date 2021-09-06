@@ -1,0 +1,16 @@
+.example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('../../../../assets/quiz-icon.jpg');
+    background-size: cover;
+  }
+
+  .truncate{
+    display:block;
+    white-space:nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

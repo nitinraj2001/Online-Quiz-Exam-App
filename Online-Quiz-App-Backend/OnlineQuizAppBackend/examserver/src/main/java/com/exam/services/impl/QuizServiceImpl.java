@@ -1,11 +1,13 @@
 package com.exam.services.impl;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.exam.model.exam.Category;
 import com.exam.model.exam.Quiz;
 import com.exam.repository.QuizRepository;
 import com.exam.services.QuizService;
@@ -53,6 +55,29 @@ public class QuizServiceImpl implements QuizService {
 		
 		this.quizRepository.deleteById(qid);
 
+	}
+
+	@Override
+	public List<Quiz> findQuizzesByCategoryId(Category category) {
+		
+		List<Quiz> listOfQuizzesByCategory=this.quizRepository.findQuizzesByCategory(category);
+		
+		System.out.println(listOfQuizzesByCategory);
+		
+		return this.quizRepository.findQuizzesByCategory(category);
+		
+	}
+
+	@Override
+	public List<Quiz> findAllActiveQuiz() {
+		
+		return this.quizRepository.findByActive(true);
+	}
+
+	@Override
+	public List<Quiz> findAllActiveQuizOfCategory(Category category) {
+	
+		return this.quizRepository.findByCategoryAndActive(category, true);
 	}
 
 }

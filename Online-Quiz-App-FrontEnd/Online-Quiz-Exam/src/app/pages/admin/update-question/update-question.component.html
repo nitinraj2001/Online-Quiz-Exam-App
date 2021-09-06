@@ -11,7 +11,9 @@
                     <textarea matInput name="content" cols="35" rows="8" placeholder="Enter Question Text" required [(ngModel)]="question.content"></textarea>
                 </mat-form-field> -->
 
-                <ckeditor  [editor]="Editor" [innerHtml]="editorData" name="content" required  [(ngModel)]="question.content"></ckeditor>
+                <ckeditor  [editor]="Editor" [innerHtml]="editorData" name="content" required  [(ngModel)]="question.content" >
+                    
+                </ckeditor>
           
            <mat-form-field appearance="fill">
               <mat-label><b>Enter Option 1</b></mat-label>
