@@ -1,1 +1,70 @@
-<p>start-quiz works!</p>
+<div class="bootstrap-wrapper">
+    <div class="container">
+       <div class="row">
+        <div class="col-md-2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2ETLxoNnhbC_FhYQPfpIrkcdRwSPYsa-04e2EbKI8RAmvAbg88m0xdAd2Y_xqKpiXWZY&usqp=CAU" class="w3-round-xxlarge" alt="Norway" style="width:100%;height:50%">
+            <h3><b>Full Name:</b>{{user.firstname.charAt(0).toUpperCase()+user.firstname.slice(1)}} {{user.lastname.charAt(0).toUpperCase()+user.lastname.slice(1)}}</h3>
+            <h3><b>Username:</b>{{user.username}}</h3>
+        </div>
+        <div class="col-md-7">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title *ngIf="questions">
+                      Test Your Knowledge!! Ongoing Quiz is <b>{{questions[0].quiz.title}}</b>
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        Think you're smart enough to be on Jeopardy? Find out with this super knowledge quiz!
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card *ngFor="let question of questions; let i=index">
+
+                    <mat-card-content >
+                      <b><p>Ques.{{i+1}} <span [innerHTML]="question.content"></span></p></b>
+                        <mat-divider></mat-divider>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <input type="radio" name="i" [value]="question.option1">{{question.option1}}
+                            </div>
+                            <div class="col-md-7">
+                                <input type="radio" name="i" [value]="question.option2">{{question.option2}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <input type="radio" name="i" [value]="question.option3">{{question.option3}}
+                            </div>
+                            <div class="col-md-7">
+                                <input type="radio" name="i" [value]="question.option4">{{question.option4}}
+                            </div>
+                        </div>
+                    </mat-card-content>
+
+                </mat-card><br>
+                <div class="container text-center">
+                    <button mat-raised-button color="primary">Submit Quiz</button>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col-md-3">
+                <mat-card style="margin-top: 70px;">
+                    <mat-card-header>
+                        <mat-card-title>
+                            <b>Quiz Progress</b>
+                        </mat-card-title>
+                        <mat-card-subtitle>Quiz will automatically submitted after time finishes.</mat-card-subtitle>
+            
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-spinner style="margin:auto" color="warn" class="example-margin"
+                        [color]="color"
+                        [mode]="mode"
+                        [value]="value"></mat-spinner>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+       
+       </div>
+      
+    </div>
+</div>

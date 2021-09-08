@@ -18,7 +18,7 @@ export class CategoryService {
   }
 
   public deleteCategory(cid:number){
-    console.log(cid);
+   // console.log(cid);
     return this.http.delete(`${baseUrl}/category/${cid}`);
   }
 

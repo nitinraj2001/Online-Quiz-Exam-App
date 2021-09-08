@@ -68,7 +68,7 @@ export class LoginService {
   getUserAuthority(){
     let user=localStorage.getItem("user");
     let userauthority=JSON.parse(user).authorities[0].authority;
-    console.log("user authority is: "+userauthority);
+    //console.log("user authority is: "+userauthority);
     return userauthority;
   }
   

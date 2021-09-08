@@ -20,10 +20,10 @@ export class UpdateCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     let cid=+this.route.snapshot.paramMap.get("cid");
-    console.log("category to be updated with cid is: "+cid);
+   // console.log("category to be updated with cid is: "+cid);
     this.categoryService.getCategory(cid).subscribe(
       (data)=>{
-        console.log("data of category from server is: "+data);
+       // console.log("data of category from server is: "+data);
         this.category=data;
       },
       (error)=>this.snakebar.open("category data can't be fetch invalid id or server problem!","ok",{duration:3000})
@@ -41,12 +41,12 @@ export class UpdateCategoryComponent implements OnInit {
   }
      this.categoryService.updateCategory(this.category).subscribe(
        (data)=>{
-         console.log(data);
+        // console.log(data);
          Swal.fire("success!!","category is successfully updated","success");
          this.router.navigate(['admin/categories']);
        },
        (error)=>{
-         console.log(error);
+         //console.log(error);
          Swal.fire("err!!","category can't be updated due to some problem try again!!","error");
        }
      )

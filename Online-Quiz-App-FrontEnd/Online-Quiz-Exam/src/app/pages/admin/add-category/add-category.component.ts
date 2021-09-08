@@ -31,12 +31,12 @@ export class AddCategoryComponent implements OnInit {
    }
     this.categoryService.addCategory(this.category).subscribe(
       (data)=>{
-        console.log("category data from backend-end is "+data);
+        //console.log("category data from backend-end is "+data);
         Swal.fire("success!!","category is successfully added","success");
         this.router.navigate(['admin/categories'])
       },
       (error)=>{
-        console.log(error);
+        //console.log(error);
         Swal.fire("err!!","category can't be added try again!!","error");
       }
     )

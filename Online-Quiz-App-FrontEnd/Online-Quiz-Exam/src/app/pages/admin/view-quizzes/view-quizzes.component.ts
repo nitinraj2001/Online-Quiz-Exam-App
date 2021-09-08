@@ -18,11 +18,11 @@ export class ViewQuizzesComponent implements OnInit {
   ngOnInit(): void {
     this.quizService.getAllQuizzes().subscribe(
       (data)=>{
-        console.log(data);
+       // console.log(data);
         this.quizzes=data;
       },
     (error)=>{
-      console.log(error);
+      //console.log(error);
       Swal.fire("err!!","sorry quizzes can't be loaded due to some errors!","error")
     }
   );
@@ -36,11 +36,11 @@ export class ViewQuizzesComponent implements OnInit {
       this.quizService.deleteQuiz(qid).subscribe(
         (data)=>{
           this.quizzes=this.quizzes.filter((quiz)=>quiz.qid!=qid);
-          console.log(data);
+          //console.log(data);
           Swal.fire("success!!","quiz is successfully deleted","success");
         },
         (error)=>{
-          console.log(error);
+          //console.log(error);
           Swal.fire("err!!","quiz can't be deleted try again!!","error");
         }
       )

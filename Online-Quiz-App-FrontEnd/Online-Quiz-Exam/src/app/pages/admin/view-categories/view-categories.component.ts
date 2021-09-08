@@ -20,7 +20,7 @@ export class ViewCategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.getAllCategories().subscribe(
       (data)=>{
-        console.log("category data from server is "+data);
+       // console.log("category data from server is "+data);
         this.categories=data;
       },
       (error)=>{console.log(error),
@@ -30,14 +30,14 @@ export class ViewCategoriesComponent implements OnInit {
   }
 
   deleteCategory(cid:number){
-    console.log("category to be deleted with cid: "+cid);
+   // console.log("category to be deleted with cid: "+cid);
     this.categoryService.deleteCategory(cid).subscribe((data)=>{
-      console.log(data);
+     // console.log(data);
       Swal.fire("success!!","category is successfully deleted","success");
       this.router.navigate(['/admin/categories']);
     },
     (error)=>{
-      console.log(error);
+     // console.log(error);
       Swal.fire("err!!","category can't be deleted try again!!","error");
     })
     

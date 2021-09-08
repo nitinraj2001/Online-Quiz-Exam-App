@@ -23,11 +23,11 @@ export class ViewAllQuizzesComponent implements OnInit {
 
           this.quizService.getAllActiveQuiz().subscribe(
             (data)=>{
-              console.log("quizzes from database is:"+data);
+           //   console.log("quizzes from database is:"+data);
               this.quizzes=data;
             },
             (error)=>{
-              console.log(error);
+             // console.log(error);
               Swal.fire("error","quizzes can't be loaded due to some problem try again!!!","error");
             }
           )
@@ -36,7 +36,7 @@ export class ViewAllQuizzesComponent implements OnInit {
         else{
           this.quizService.getAllActiveQuizOfCategory(this.categoryId).subscribe(
             (data)=>{
-              console.log("quizzes from database is:"+data);
+             // console.log("quizzes from database is:"+data);
               this.quizzes=data;
               //this.quizzes=this.quizzes.filter((quiz)=>quiz.category.cid==this.categoryId);
               if(this.quizzes.length==0){
@@ -45,7 +45,7 @@ export class ViewAllQuizzesComponent implements OnInit {
               }
             },
             (error)=>{
-              console.log(error);
+              //console.log(error);
               Swal.fire("error","quizzes can't be loaded due to some problem try again!!!","error");
             }
           )

@@ -29,11 +29,11 @@ export class UpdateQuestionComponent implements OnInit {
     console.log("title of the quiz is "+this.quizTitle+" quiz id is "+this.quizId);
     this.questionService.getQuestion(this.quizId).subscribe(
       (data)=>{
-        console.log(data);
+       // console.log(data);
         this.question=data;
       },
       (error)=>{
-        console.log(error);
+        //console.log(error);
         Swal.fire("err!!","can't load question data try again!!","error");
       }
     )

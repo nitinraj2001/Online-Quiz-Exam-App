@@ -30,7 +30,7 @@ export class UpdateQuizComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.getAllCategories().subscribe(
       (data)=>{
-        console.log("categories from server is: "+data);
+       // console.log("categories from server is: "+data);
         this.category=data;
       },
       (error)=>{console.log(error);
@@ -51,7 +51,7 @@ export class UpdateQuizComponent implements OnInit {
 
   updateQuiz(){
 
-    console.log("quiz data send from front-end is: "+this.quiz);
+   // console.log("quiz data send from front-end is: "+this.quiz);
     if(this.quiz.title==null||this.quiz.title==''){
         this.snakebar.open("Invalid data!! quiz title can't be empty or null");
         return;
@@ -74,12 +74,12 @@ export class UpdateQuizComponent implements OnInit {
     }
     this.quizService.updatetheQuiz(this.quiz).subscribe(
       (data)=>{
-        console.log(JSON.stringify(data));
+       // console.log(JSON.stringify(data));
         Swal.fire("success!!","quiz is successfully updated","success");
         this.router.navigate(['/admin/view-quizzes']);
       },
       (error)=>{
-        console.log(error);
+       // console.log(error);
         Swal.fire("err!!","quiz can't be updated due to some problem or invalid data try again!!","error");
       }
     )

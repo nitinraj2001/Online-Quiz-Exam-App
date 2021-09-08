@@ -25,7 +25,7 @@ export class ViewQuestionsComponent implements OnInit {
     this.title=this.route.snapshot.paramMap.get("title");
     this.quizTitle=this.title;
     this.title=this.title.split('-').join(" ");
-    console.log("title of the quiz is "+this.title+" quiz id is "+this.quizId);
+    //console.log("title of the quiz is "+this.title+" quiz id is "+this.quizId);
     this.getQuizQuestions();
   }
 
@@ -33,17 +33,17 @@ export class ViewQuestionsComponent implements OnInit {
     this.questionService.getAllQuestions(this.quizId).subscribe(
       (data)=>{
         this.questions=data;
-        console.log(data);
+        //console.log(data);
       },
       (error)=>{
-        console.log(error);
+       // console.log(error);
         Swal.fire("error!!","questions can't be loaded due to some problems try again!!","error");
       }
     )
   }
 
   deleteQuestion(quesId:any){
-    console.log("question with quesId: "+quesId+"is to be deleted");
+    //console.log("question with quesId: "+quesId+"is to be deleted");
     Swal.fire({
       icon:'info',title:'Are you sure you want to delete this question?',confirmButtonText:'Delete',showCancelButton:true
     }).then((result)=>{
@@ -51,11 +51,11 @@ export class ViewQuestionsComponent implements OnInit {
        this.questionService.deleteQuestion(quesId).subscribe(
          (data)=>{
            this.questions=this.questions.filter((question)=>question.quesId!=quesId);
-           console.log(data);
+          // console.log(data);
            Swal.fire("success!!","question is successfully deleted","success");
          },
          (error)=>{
-           console.log(error);
+           //console.log(error);
            Swal.fire("err!!","question can't be deleted try again!!","error");
          }
        )

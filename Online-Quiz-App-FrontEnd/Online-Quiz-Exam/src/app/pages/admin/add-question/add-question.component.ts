@@ -34,12 +34,12 @@ export class AddQuestionComponent implements OnInit {
     this.question.quiz.qid=this.quizId;
     this.questionService.addQuestion(this.question).subscribe(
       (data)=>{
-        console.log(data);
+        //console.log(data);
         Swal.fire("success!!","question is successfully added","success");
         this.Route.navigate(['/admin/view-questions',this.quizId,this.quizTitle]);
       },
       (error)=>{
-        console.log(error);
+       // console.log(error);
         Swal.fire("err!!","question can't be added try again!!","error");
       }
     )

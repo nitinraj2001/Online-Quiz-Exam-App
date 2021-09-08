@@ -61,12 +61,12 @@ export class AddQuizComponent implements OnInit {
     }
     this.quizService.addQuiz(this.quiz).subscribe(
       (data)=>{
-        console.log(JSON.stringify(data));
+        //console.log(JSON.stringify(data));
         Swal.fire("success!!","quiz is successfully added","success");
         this.router.navigate(['/admin/view-quizzes']);
       },
       (error)=>{
-        console.log(error);
+       // console.log(error);
         Swal.fire("err!!","quiz can't be added due to some problem or invalid data try again!!","error");
       }
     )

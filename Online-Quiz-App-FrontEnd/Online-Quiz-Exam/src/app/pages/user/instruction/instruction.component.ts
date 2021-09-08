@@ -23,11 +23,11 @@ export class InstructionComponent implements OnInit {
         this.quizId=params.qid;
         this.quizService.getQuiz(this.quizId).subscribe(
           (data)=>{
-            console.log(data);
+            //console.log(data);
             this.quiz=data;
           },
           (error)=>{
-            console.log(error);
+            //console.log(error);
             Swal.fire("error!!","Quiz instructions can't be loaded try again!!","error");
           }
         )
