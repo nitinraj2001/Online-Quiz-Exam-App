@@ -1,7 +1,9 @@
 package com.exam.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.exam.model.exam.Question;
 import com.exam.model.exam.Quiz;
+import com.exam.model.exam.QuizResultResponse;
 import com.exam.services.QuestionService;
 import com.exam.services.QuizService;
 
@@ -73,6 +76,40 @@ public class QuestionController {
 	@DeleteMapping("/{quesId}")
 	public void deleteQuestion(@PathVariable("quesId") Long quesId) throws Exception{
 		this.questionService.deletequestion(quesId);
+	}
+	
+	@PostMapping("/evaluate-quiz")
+	public ResponseEntity<?> evaluateQuiz(@RequestBody List<Question> questions){
+		System.out.println(questions);
+		Integer correctAnswers=0;
+		double marksObtained = 0;
+		Integer attempted=0;
+		for(Question theQues:questions) {
+			try {
+				Question question=this.questionService.getQuestionById(theQues.getQuesId());
+				if(theQues.getGivenAnswer().trim().equals(question.getAnswer().trim())) {
+					correctAnswers=correctAnswers+1;
+					attempted=attempted+1;
+				}
+				else {
+					attempted=attempted+1;
+				}
+				double marksObtainedPerQuestion=Double.parseDouble(questions.get(0).getQuiz().getMaxMarks())/questions.size();
+				marksObtained=correctAnswers*marksObtainedPerQuestion;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		QuizResultResponse result=new QuizResultResponse();
+		
+		result.setCorrectAnswers(correctAnswers);
+		result.setAttempted(attempted);
+		result.setMarksObtained(marksObtained);
+		result.setQuestions(questions);
+		
+		return ResponseEntity.ok(result);
 	}
 	
 	

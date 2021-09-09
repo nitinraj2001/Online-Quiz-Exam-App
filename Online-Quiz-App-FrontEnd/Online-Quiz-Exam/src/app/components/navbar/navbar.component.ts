@@ -18,10 +18,10 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //if(this.isLoggedIn==false&&localStorage.getItem("user")!=null){
-     // this.logout();
-     // this.snakebar.open("Access denied due to refresh of page please login! ","ok");
-    //}
+    if(this.isLoggedIn==false&&localStorage.getItem("user")!=null){
+      this.logOut();
+     this.snakebar.open("Access denied due to refresh of page please login! ","ok");
+    }
     this.loginservice.loginStatusSubject.asObservable().subscribe((data)=>{
       this.isLoggedIn=this.loginservice.IsloggedIn();
       this.user=this.loginservice.getUserDetails();
@@ -29,13 +29,13 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  logout(){
+  logOut(){
     this.loginservice.logout();
     //window.location.href='/login';
     this.isLoggedIn=false;
     this.user=null;
     this.router.navigate(['login']);
-    this.snakebar.open("you have successfully logged out","ok");
+    this.snakebar.open("you have successfully logged out","ok",{duration:2000});
   }
 
 

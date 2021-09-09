@@ -45,6 +45,7 @@ import { ViewAllQuizzesComponent } from './pages/user/view-all-quizzes/view-all-
 import { InstructionComponent } from './pages/user/instruction/instruction.component';
 import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { DisableRightClickDirective } from './pages/admin/DisableRightClickDirective'
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatSlideToggleModule,
     MatSelectModule,
     CKEditorModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+  
     
   ],
   providers: [
