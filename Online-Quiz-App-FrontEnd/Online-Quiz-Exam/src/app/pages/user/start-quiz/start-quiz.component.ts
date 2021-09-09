@@ -1,11 +1,12 @@
 import { LoginService } from 'src/app/service/login.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionService } from 'src/app/service/question.service';
 import { LocationStrategy } from '@angular/common';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component,HostListener, OnInit} from '@angular/core';
 import Swal from 'sweetalert2';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-start-quiz',
@@ -22,13 +23,12 @@ export class StartQuizComponent implements OnInit {
   questions:any=[{
     quesId:'',answer:'',content:'',givenAnswer:'',option1:'',option2:'',option3:'',option4:'',quiz:{quizId:''},
   },]
-  color: ThemePalette = 'primary';
-  mode: ProgressSpinnerMode = 'determinate';
-  value = 50;
   isSubmit=false;
   result:any;
+  warningCount=0;
+  timer=0;
 
-  constructor(private locationStrategy:LocationStrategy,private questionService:QuestionService,private router:ActivatedRoute,private loginService:LoginService) { }
+  constructor(private route:Router,private locationStrategy:LocationStrategy,private questionService:QuestionService,private router:ActivatedRoute,private loginService:LoginService,private snakebar:MatSnackBar) { }
 
   ngOnInit(): void {
     this.preventbackbutton();
@@ -36,6 +36,8 @@ export class StartQuizComponent implements OnInit {
     this.questionService.getQuestionsOfQuiz(this.qid).subscribe(
       (data)=>{
         this.questions=data;
+        this.timer=this.questions.length*60;
+        this.startTimer();
       },
       (error)=>{
         //console.log(error);
@@ -46,16 +48,31 @@ export class StartQuizComponent implements OnInit {
   }
 
   public preventbackbutton(){
+    this.warningCount++;
     history.pushState(null,null,location.href);
     this.locationStrategy.onPopState(()=>{
       history.pushState(null,null,location.href);
-      Swal.fire("error","you can't navigate back","error");
+      Swal.fire("warning","you can't navigate back","warning");
+      if(this.warningCount>5){
+        //this.submitQuiz();
+        Swal.fire("warning","This is your last warning now your exam gets automatically submitted!!","warning");
+        this.logout();
+      }
+      
     })
   }
+  
 
   @HostListener('contextmenu', ['$event'])
   onRightClick(event) {
     Swal.fire("warning","You can't right click if u will do so your exam will be cancalled!!","warning");
+    this.warningCount++;
+    if(this.warningCount>5){
+      console.log("warning count number is:"+this.warningCount);
+      //this.submitQuiz();
+      Swal.fire("warning","This is your last warning now your exam gets automatically submitted!!","warning");
+      this.logout();
+    }
   event.preventDefault();
 }
 
@@ -87,4 +104,26 @@ export class StartQuizComponent implements OnInit {
     })
   }
 
+  logout(){
+    this.loginService.logout();
+    //window.location.href='/login';
+    this.route.navigate(['login']);
+    this.snakebar.open("you have logged out due to max warnings","ok",{duration:3000});
+  }
+
+  startTimer(){
+   let t= window.setInterval(()=>{
+      if(this.timer<=0){
+        this.submitQuiz();
+        clearInterval(t);
+      }
+      else{
+        this.timer--;
+      }
+    },1000);
+  }
+
+  
 }
+
+

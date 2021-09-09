@@ -10,7 +10,7 @@
    <a *ngIf="!isLoggedIn" routerLink="/login" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" style="margin-right:2%;">
     Login
   </a>
-  <a *ngIf="isLoggedIn" (click)="logout()" routerLink="/login" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" style="margin-right:3%;">
+  <a *ngIf="isLoggedIn" (click)="logOut()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" style="margin-right:3%;">
     Logout
   </a>
   <a *ngIf="isLoggedIn&&user!=null"  routerLink="/admin/profile" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" style="margin-right:12%;">
