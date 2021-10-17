@@ -76,5 +76,5 @@ export class LoginComponent implements OnInit {
         (error)=>this.snakebar.open("invalid details!! please try again with valid credentials",'ok',{duration:3000}
         ));
   }
-
+//going to implement Image processing functionality
 }
